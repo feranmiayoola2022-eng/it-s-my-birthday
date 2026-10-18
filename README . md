@@ -1,0 +1,53 @@
+# FERRANTECH — The Digital Experience
+
+Portfolio site for Ayoola Enoch Oluwaferanmi (Ferran).
+Static HTML, CSS and JavaScript. No build step, no dependencies to install.
+
+## Run locally
+
+Any static server works:
+
+    npx serve .
+    # or
+    python3 -m http.server 8080
+
+Then open http://localhost:8080
+
+## Deploy
+
+- **GitHub Pages:** push to `main`, then Settings → Pages → Deploy from branch → `main` / root.
+- **Netlify / Vercel / Cloudflare Pages:** point at the repo; no build command, publish directory `/`.
+
+## Before going live
+
+1. **Social share image.** Export `assets/og-image.svg` (or design your own 1200×630) to
+   `assets/og-image.png`. Update the `og:url` / `twitter:image` meta tags in `index.html`
+   with your real deployed URL — most platforms require absolute URLs.
+2. **Canonical URL.** Uncomment and set `<link rel="canonical">` in `index.html`.
+3. **Check the links.** The departmental site, GitHub, LinkedIn, X and email are the only
+   external destinations. Verify each one resolves.
+
+## Editing content
+
+### Projects — `assets/js/data.js` → `PROJECTS`
+
+- Reorder the array to change display order; the item with `featured: true` gets the
+  large layout.
+- Add `live` or `source` only when a real URL exists. Missing links render as a dashed
+  "not public yet" placeholder — never a dead button.
+- `tech` and `features` render only when the arrays contain items. Add confirmed
+  technologies only, e.g. `tech: ['HTML', 'CSS', 'JavaScript']`.
+- `tone` controls the artwork accent: `accent` (lime), `emerald`, `blue`, `gold`.
+- `status` + `tone` pair: `Live`/`live`, `In progress`/`progress`, `Concept`/`concept`.
+
+### Gallery — `assets/js/data.js` → `GALLERY`
+
+Every item currently shows a designed placeholder tile with a "Placeholder" badge.
+To use a real image:
+
+1. Save an optimised image (WebP or compressed JPG, ~1600px wide max) to `assets/img/`.
+2. Add to the item:
+   ```js
+   src: 'assets/img/workspace.webp',
+   placeholder: false,
+   alt: 'My desk with a laptop showing a code editor.'
